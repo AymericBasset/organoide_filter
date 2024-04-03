@@ -30,7 +30,7 @@ threshold_value = st.slider('Threshold value', 0, 500, 250)
 def process_data(uploaded_file, threshold_value):
     df = pd.read_excel(uploaded_file)
 
-    columns_to_analyze = ['Area', 'Perimeter', 'Feret',
+    columns_to_analyze = ['Area', 'Perim.', 'Feret',
                           'FeretX', 'FeretY', 'FeretAngle', 'MinFeret']
     df = df[columns_to_analyze]
     # Calculate the mean of the 'Feret' column
