@@ -42,7 +42,7 @@ if process_button_placeholder.button('Process'):
                 'Min': df_kept[column].min(),
                 'Max': df_kept[column].max(),
                 'Mean': df_kept[column].mean(),
-                'Sample Standard Deviation': df_kept['data_column'].std(ddof=1),
+                'Sample Standard Deviation': df_kept[column].std(ddof=1),
                 'Standard Error of the Mean': df_kept[column].sem(),
                 'N_values': df_kept[column].count()
             }
