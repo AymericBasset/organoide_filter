@@ -39,11 +39,12 @@ if process_button_placeholder.button('Process'):
 
         for column in columns_to_analyze:
             df_stats[column] = {
-                'Min': df[column].min(),
-                'Max': df[column].max(),
-                'Mean': df[column].mean(),
-                'Std': df[column].std(),
-                'N_values': df[column].count()
+                'Min': df_kept[column].min(),
+                'Max': df_kept[column].max(),
+                'Mean': df_kept[column].mean(),
+                'Sample Standard Deviation': df_kept['data_column'].std(ddof=1),
+                'Standard Error of the Mean': df_kept[column].sem(),
+                'N_values': df_kept[column].count()
             }
 
         # Convert dictionary to DataFrame for better readability
