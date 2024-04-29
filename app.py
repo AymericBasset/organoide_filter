@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from io import BytesIO
+import os
 
 # Function to convert multiple DataFrames to an Excel file in memory
 
@@ -71,12 +72,13 @@ if st.button('Process'):
 if 'data_processed' in st.session_state and st.session_state['data_processed']:
     # Display the stats DataFrame as a preview
     st.dataframe(st.session_state['df_stats'])
-
+    base_name, extension = os.path.splitext(uploaded_file.name)
+    new_file_name = f"{base_name}_analysis.xlsx"
     # Button for downloading all DataFrames in one Excel file
     st.download_button(
         label="Download Result Excel File",
         data=to_excel(
             st.session_state['df_kept'], st.session_state['df_drop'], st.session_state['df_stats']),
-        file_name='organoid_analysis.xlsx',
+        file_name=new_file_name,
         mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
     )
